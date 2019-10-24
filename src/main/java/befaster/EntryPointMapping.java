@@ -74,6 +74,3 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
-
-
-

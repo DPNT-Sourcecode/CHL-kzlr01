@@ -69,5 +69,3 @@ public class SumSolutionTest {
 
     //        assertThat(sumSolution.sum(-1, -2), equalTo(2));
 }
-
-
