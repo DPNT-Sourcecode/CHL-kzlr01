@@ -32,7 +32,7 @@ class CheckoutUtil {
                 if(priceList.containsKey(thisSku)) {
                     thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
                 }else{
-                    return 0;
+                    return -1;
                 }
             }
 
@@ -65,4 +65,5 @@ class CheckoutUtil {
 
 
 }
+
 
