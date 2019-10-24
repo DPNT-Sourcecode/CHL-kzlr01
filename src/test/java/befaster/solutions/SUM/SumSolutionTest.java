@@ -43,13 +43,14 @@ public class SumSolutionTest {
     public void itShouldSumBothValidParams() {
         assertThat( sum.compute(0,0), equalTo(0));
         assertThat( sum.compute(0,100), equalTo(100));
-        assertThat( sum.compute(1,100), equalTo(101));
-        assertThat( sum.compute(100,1), equalTo(101));
+        assertThat( sum.compute(15,100), equalTo(115));
+        assertThat( sum.compute(100,45), equalTo(145));
         assertThat( sum.compute(100,0), equalTo(100));
     }
 
 
     //        assertThat(sum.compute(-1, -2), equalTo(2));
 }
+
 
 
