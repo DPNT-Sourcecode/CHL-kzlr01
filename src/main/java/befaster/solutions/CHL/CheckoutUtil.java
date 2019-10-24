@@ -5,14 +5,25 @@ import java.util.Map;
 
 class CheckoutUtil {
 
+
+    private PriceService priceService = new PriceService();
+    private OfferService offerService = new OfferService();
+
+
+    public Integer getTotalPrice(String skus){
+
+        Map<String,Integer> itemWiseCount = getSkuCountMap(skus);
+        priceList = priceService.getPriceList()
+
+
+
+
+    }
+
     private Result getResult(Integer total, Integer offer) {
         return new Result(total / offer, total % offer);
     }
 
-    public Integer getTotalPrice(String skus){
-
-
-    }
 
 
     private Map<String,Integer> getSkuCountMap(String skus){
@@ -33,3 +44,4 @@ class CheckoutUtil {
 
 
 }
+

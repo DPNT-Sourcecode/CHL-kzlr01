@@ -3,7 +3,7 @@ package befaster.solutions.CHL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PriceService {
+class PriceService {
 
     //Ideally from a persistance
     private static Map<String,Integer> priceList = new HashMap<String,Integer>(){
@@ -15,7 +15,9 @@ public class PriceService {
         }
     };
 
-    public static Map<String, Integer> getPriceList() {
+    Map<String, Integer> getPriceList() {
         return priceList;
     }
+
 }
+
