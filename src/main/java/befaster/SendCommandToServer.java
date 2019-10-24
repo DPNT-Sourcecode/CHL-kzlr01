@@ -71,10 +71,11 @@ public class SendCommandToServer {
                     .withConfig(getConfig())
                     .withActionProvider(new UserInputAction(args))
                     .start();
-        }catch (InvalidComputeParamException){
+        }catch (InvalidComputeParamException e){
             //
         }
     }
 
 }
+
 
