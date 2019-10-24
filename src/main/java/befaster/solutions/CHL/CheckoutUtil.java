@@ -17,20 +17,18 @@ class CheckoutUtil {
 
     private Map<String,Integer> getSkuCountMap(String skus){
 
-        Map<String,Integer> priceList = new HashMap<String,Integer>(){
-            {
-                put("A",50);
-                put("B",30);
-                put("C",20);
-                put("D",15);
-            }
-        };
+        Map<String,Integer> result = new HashMap<>();
+
         String[] items = skus.split("");
         //A,B,C,D,A
-        for(String thisItem: items){
-
+        for(String thisSku: items){
+            if(result.containsKey(thisSku)){
+                result.put(thisSku, result.get(thisSku) + 1);
+            }else{
+                result.put(thisSku, 1);
+            }
         }
-
+        return result;
     }
 
 
