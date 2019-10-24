@@ -11,24 +11,26 @@ import static org.junit.Assert.*;
 public class HelloSolutionTest {
     private HelloSolution helloSolution;
 
+    private String expectedValue = "Hello, World!";
+
     @Before
     public void setUp() {
-        helloSolution= new HelloSolution();
+        helloSolution = new HelloSolution();
     }
 
 
     @Test
     public void returnEmptyWhenEmptyParam() {
-        assertThat( helloSolution.hello(""), equalTo(""));
+        assertThat(helloSolution.hello(""), equalTo(""));
     }
 
     @Test
     public void returnMessageWithAHelloPrefix() {
-        assertThat( helloSolution.hello("testname"), equalTo("Hello testname"));
+        assertThat(helloSolution.hello("anything"), equalTo(expectedValue));
     }
 
     @Test
     public void returnMessageWithAHelloPrefixEvenWithNewLineChar() {
-        assertThat( helloSolution.hello("\ntestname"), equalTo("Hello \ntestname"));
+        assertThat(helloSolution.hello("\nsomething"), equalTo(expectedValue));
     }
 }
