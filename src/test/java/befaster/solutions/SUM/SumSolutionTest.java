@@ -8,43 +8,44 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 public class SumSolutionTest {
-    private SumSolution sum;
+    private SumSolution sumSolution;
 
     @Before
     public void setUp() {
-        sum = new SumSolution();
+        sumSolution= new SumSolution();
     }
 
     @Test(expected = InvalidComputeParamException.class)
     public void whenTheFirstParamisNegative_ItShouldThrow_InvalidComputeParamException() throws InvalidComputeParamException{
-        sum.compute(-1,0);
+        sumSolution.sum(-1,0);
     }
     @Test(expected = InvalidComputeParamException.class)
     public void whenTheSecondParamisNegative_ItShouldThrow_InvalidComputeParamException() throws InvalidComputeParamException{
-        sum.compute(0,-2);
+        sumSolution.sum(0,-2);
     }
     @Test(expected = InvalidComputeParamException.class)
     public void whenBothParamsAreNegative_ItShouldThrow_InvalidComputeParamException() throws InvalidComputeParamException{
-        sum.compute(-1,-3);
+        sumSolution.sum(-1,-3);
     }
     @Test(expected = InvalidComputeParamException.class)
     public void whenTheFirstParamisBeyondMaximum_ItShouldThrow_InvalidComputeParamException() throws InvalidComputeParamException{
-        sum.compute(101,0);
+        sumSolution.sum(101,0);
     }
     @Test(expected = InvalidComputeParamException.class)
     public void whenTheSecondParamisBeyondMaximum_ItShouldThrow_InvalidComputeParamException() throws InvalidComputeParamException{
-        sum.compute(0,101);
+        sumSolution.sum(0,101);
     }
 
     @Test
     public void itShouldSumBothValidParams() throws InvalidComputeParamException {
-        assertThat( sum.compute(0,0), equalTo(0));
-        assertThat( sum.compute(0,100), equalTo(100));
-        assertThat( sum.compute(15,100), equalTo(115));
-        assertThat( sum.compute(100,45), equalTo(145));
-        assertThat( sum.compute(100,0), equalTo(100));
+        assertThat( sumSolution.sum(0,0), equalTo(0));
+        assertThat( sumSolution.sum(0,100), equalTo(100));
+        assertThat( sumSolution.sum(15,100), equalTo(115));
+        assertThat( sumSolution.sum(100,45), equalTo(145));
+        assertThat( sumSolution.sum(100,0), equalTo(100));
     }
 
 
-    //        assertThat(sum.compute(-1, -2), equalTo(2));
+    //        assertThat(sumSolution.sum(-1, -2), equalTo(2));
 }
+
