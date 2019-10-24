@@ -22,6 +22,11 @@ public class CheckliteSolutionTest {
 
     @Test
     public void whenEmptySKus() {
+        assertThat( checkliteSolution.checklite(emptySkUs), equalTo(-1));
+
+    }
+    @Test
+    public void whenEmSKus() {
         assertThat( checkliteSolution.checklite(""), equalTo(-1));
 
     }
