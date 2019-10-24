@@ -1,4 +1,5 @@
 package befaster.solutions.exceptions;
 
-public class InvalidComputerParamException extends Exception{
+public class InvalidComputeParamException extends Exception{
 }
+
