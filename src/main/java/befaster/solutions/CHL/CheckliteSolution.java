@@ -5,11 +5,12 @@ public class CheckliteSolution {
 
         if(skus.isEmpty()) return  -1;
 
-        
+
         return 0;
 
     }
 }
+
 
 
 
