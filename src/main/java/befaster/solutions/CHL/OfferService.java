@@ -14,10 +14,6 @@ public class OfferService {
         }
     };
 
-    Set<Offer> getCurrentOffer() {
-        return currentOffers;
-    }
-
 
     public Optional<Offer> getOfferFor(String sku){
         for (Offer offer : currentOffers){
@@ -27,6 +23,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
