@@ -6,7 +6,7 @@ import java.util.Map;
 class PriceService {
 
     //Ideally from a persistance
-    private static Map<String,Integer> priceList = new HashMap<String,Integer>(){
+    private Map<String,Integer> priceList = new HashMap<String,Integer>(){
         {
             put("A",50);
             put("B",30);
@@ -20,4 +20,5 @@ class PriceService {
     }
 
 }
+
 

@@ -2,6 +2,7 @@ package befaster.solutions.CHL;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 class CheckoutUtil {
 
@@ -10,10 +11,14 @@ class CheckoutUtil {
     private OfferService offerService = new OfferService();
 
 
-    public Integer getTotalPrice(String skus){
+    Integer getTotalPrice(String skus){
+
+        Map<String, Integer> priceList = priceService.getPriceList();
+        Set<Offer> currentOffer = offerService.getCurrentOffer();
 
         Map<String,Integer> itemWiseCount = getSkuCountMap(skus);
-        priceList = priceService.getPriceList()
+
+
 
 
 
@@ -44,4 +49,5 @@ class CheckoutUtil {
 
 
 }
+
 
