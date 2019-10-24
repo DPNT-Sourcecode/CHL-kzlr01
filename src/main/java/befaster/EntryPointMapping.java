@@ -42,7 +42,7 @@ class EntryPointMapping {
         checkliteSolution = new CheckliteSolution();
     }
 
-    Object sum(List<JsonElement> p)  {
+    Object sum(List<JsonElement> p) throws InvalidComputeParamException {
         return sumSolution.sum(p.get(0).getAsInt(), p.get(1).getAsInt());
     }
 
@@ -74,4 +74,5 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
+
 
