@@ -19,4 +19,3 @@ public class PriceService {
         return priceList;
     }
 }
-
