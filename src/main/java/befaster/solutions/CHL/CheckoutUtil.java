@@ -18,6 +18,10 @@ class CheckoutUtil {
 
         Map<String,Integer> itemWiseCount = getSkuCountMap(skus);
 
+        for(String thisSku: itemWiseCount.keySet()){
+            if(currentOffer.contains())
+
+        }
 
 
 
@@ -49,5 +53,6 @@ class CheckoutUtil {
 
 
 }
+
 
 

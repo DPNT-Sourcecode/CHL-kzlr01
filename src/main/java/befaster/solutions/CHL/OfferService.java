@@ -1,6 +1,7 @@
 package befaster.solutions.CHL;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class OfferService {
@@ -17,7 +18,16 @@ public class OfferService {
         return currentOffers;
     }
 
+
+    public Optional<Offer> getOfferFor(String sku){
+        for (Offer offer : currentOffers){
+            if(offer.getSku().equals(sku)) return Optional.of(offer);
+        }
+        return Optional.empty();
+    }
+
 }
+
 
 
 
