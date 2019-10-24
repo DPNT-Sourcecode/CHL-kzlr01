@@ -1,23 +1,22 @@
 package befaster.solutions.CHL;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class OfferService {
 
 
     //Ideally from a persistance
-    private static Map<String,Integer> priceList = new HashMap<String,Integer>(){
+    private static Set<Offer> currentOffers = new HashSet<Offer>(){
         {
-            put("A",50);
-            put("B",30);
-            put("C",20);
-            put("D",15);
+            add(new Offer())
         }
     };
 
-    public static Map<String, Integer> getPriceList() {
-        return priceList;
+    public static Set<Offer> getCurrentOffer() {
+        return currentOffers;
     }
 
 
@@ -31,5 +30,7 @@ public class OfferService {
             +------+-------+----------------+
 
 }
+
+
 
 
