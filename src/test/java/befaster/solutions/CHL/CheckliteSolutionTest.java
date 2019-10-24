@@ -1,5 +1,9 @@
 package befaster.solutions.CHL;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 
 public class CheckliteSolutionTest {
@@ -9,15 +13,16 @@ public class CheckliteSolutionTest {
     private String noOfferSKUs = "ADE";
     private String sKUsWithOffer = "ADEA";
 
-    private SumSolution sumSolution;
+    private CheckliteSolution checkliteSolution;
 
     @Before
     public void setUp() {
-        sumSolution= new SumSolution();
+        checkliteSolution= new CheckliteSolution();
     }
 
-    @Test(expected = InvalidComputeParamException.class)
-    public void whenTheFirstParamisNegative_ItShouldReturnNull() {
-        assertThat( sumSolution.sum(-1,0), equalTo(null));
+    @Test
+    public void whenEmptySKus() {
+        assertThat( checkliteSolution.checklite(""), equalTo(-1));
+        
     }
 }
