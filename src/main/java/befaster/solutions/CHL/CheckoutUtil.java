@@ -29,7 +29,11 @@ class CheckoutUtil {
                 Result result = getResult(itemWiseCount.get(thisSku), thisOffer.getOfferCount());
                 thisLineValue = (result.getOfferCount() * thisOffer.getOfferPrice()) + (result.getRemainingCount() * priceList.get(thisSku));
             } else {
-                thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
+                if(priceList.containsKey(thisSku)) {
+                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
+                }else{
+                    return -1;
+                }
             }
 
             grandTotal = grandTotal + thisLineValue;
@@ -44,7 +48,6 @@ class CheckoutUtil {
 
 
     private Map<String, Integer> getSkuCountMap(String skus) {
-
         Map<String, Integer> result = new HashMap<>();
 
         String[] items = skus.split("");
@@ -57,6 +60,7 @@ class CheckoutUtil {
             }
         }
         return result;
+
     }
 
 
