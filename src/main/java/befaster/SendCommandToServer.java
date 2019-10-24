@@ -2,6 +2,7 @@ package befaster;
 
 import befaster.runner.ConfigNotFoundException;
 import befaster.runner.UserInputAction;
+import befaster.solutions.exceptions.InvalidComputeParamException;
 import tdl.client.queue.QueueBasedImplementationRunner;
 import tdl.client.runner.ChallengeSession;
 
@@ -51,7 +52,7 @@ public class SendCommandToServer {
      *        * Anything really, provided that this file stays runnable.
      *
      **/
-    public static void main(String[] args) throws ConfigNotFoundException {
+    public static void main(String[] args) throws ConfigNotFoundException, InvalidComputeParamException {
         EntryPointMapping entry = new EntryPointMapping();
 
         QueueBasedImplementationRunner runner = new QueueBasedImplementationRunner.Builder()
@@ -72,5 +73,3 @@ public class SendCommandToServer {
     }
 
 }
-
-
