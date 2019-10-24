@@ -51,7 +51,7 @@ public class SendCommandToServer {
      * * You can change the file structure.
      * * Anything really, provided that this file stays runnable.
      **/
-    public static void main(String[] args) throws ConfigNotFoundException, InvalidComputeParamException{
+    public static void main(String[] args) throws ConfigNotFoundException{
         EntryPointMapping entry = new EntryPointMapping();
 
         QueueBasedImplementationRunner runner = new QueueBasedImplementationRunner.Builder()
@@ -72,6 +72,7 @@ public class SendCommandToServer {
     }
 
 }
+
 
 
 
