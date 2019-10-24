@@ -23,6 +23,6 @@ public class CheckliteSolutionTest {
     @Test
     public void whenEmptySKus() {
         assertThat( checkliteSolution.checklite(""), equalTo(-1));
-        
+
     }
 }
