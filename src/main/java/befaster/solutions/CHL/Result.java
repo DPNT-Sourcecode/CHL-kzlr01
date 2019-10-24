@@ -1,27 +1,27 @@
 package befaster.solutions.CHL;
 
 class Result {
-    private Integer q;
-    private Integer r;
+    private Integer offerCount;
+    private Integer remainingCount;
 
-    Result(Integer q, Integer r) {
-        this.q = q;
-        this.r = r;
+    public Result(Integer offerCount, Integer remainingCount) {
+        this.offerCount = offerCount;
+        this.remainingCount = remainingCount;
     }
 
-    public Integer getQ() {
-        return q;
+    public Integer getOfferCount() {
+        return offerCount;
     }
 
-    public Integer getR() {
-        return r;
+    public void setOfferCount(Integer offerCount) {
+        this.offerCount = offerCount;
     }
 
-    public void setQ(Integer q) {
-        this.q = q;
+    public Integer getRemainingCount() {
+        return remainingCount;
     }
 
-    public void setR(Integer r) {
-        this.r = r;
+    public void setRemainingCount(Integer remainingCount) {
+        this.remainingCount = remainingCount;
     }
 }
