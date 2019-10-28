@@ -63,7 +63,7 @@ public class CheckoutUtil {
                 if(currentCount % offerCount == 0)
                     finalValue = Math.max(0, toRemove) ;
                 else
-                    finalValue = Math.max(0, toRemove) + 1;
+                    finalValue = Math.max(0, toRemove) +1;
 
                 refinedItemWiseCount.put(thisFreeItemSku, finalValue );
             }
