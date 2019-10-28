@@ -27,35 +27,41 @@ public class CheckoutUtil {
         for (String thisSku : refinedItemWiseCount.keySet()) {
             List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
 
-            if (maybeOffer.isPresent()) {
-                CountOffer thisCountOffer = maybeOffer.get();
-                Result result = mathUtil.getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
-                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainder() * priceList.get(thisSku));
+            Integer thisLineValue = 0;
+
+            if (!countOffers.isEmpty()) {
+//                for (CountOffer countOffer : countOffers) {
+//                    CountOffer thisCountOffer = maybeOffer.get();
+//                    Result result = mathUtil.getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
+//                    thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainder() * priceList.get(thisSku));
+//
+//                }
             } else {
-                if(priceList.containsKey(thisSku)) {
+                if (priceList.containsKey(thisSku)) {
                     thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
-                }else{
+                } else {
                     return -1;
                 }
             }
 
-            grandTotal = grandTotal;
+            grandTotal = grandTotal + thisLineValue;
         }
+
         return grandTotal;
     }
 
 
-     Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
+    Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
         Map<String, Integer> refinedItemWiseCount = itemWiseCount;
 
         Map<String, Integer> freeItems = offerService.getFreeItems(itemWiseCount);
 
-        for ( String thisFreeItemSku: freeItems.keySet()){
-               if(refinedItemWiseCount.containsKey(thisFreeItemSku)) {
-                   Integer currentCount = refinedItemWiseCount.get(thisFreeItemSku);
-                   Integer toRemove = currentCount - freeItems.get(thisFreeItemSku);
-                   refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove));
-               }
+        for (String thisFreeItemSku : freeItems.keySet()) {
+            if (refinedItemWiseCount.containsKey(thisFreeItemSku)) {
+                Integer currentCount = refinedItemWiseCount.get(thisFreeItemSku);
+                Integer toRemove = currentCount - freeItems.get(thisFreeItemSku);
+                refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove));
+            }
         }
         return refinedItemWiseCount;
     }
@@ -79,3 +85,4 @@ public class CheckoutUtil {
 
 
 }
+
