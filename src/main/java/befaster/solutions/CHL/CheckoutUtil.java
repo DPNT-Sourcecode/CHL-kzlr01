@@ -24,19 +24,23 @@ public class CheckoutUtil {
 
 
     private Integer calculateTotalForSku(String thisSku, Integer count) {
-        Map<String, Integer> priceList = priceService.getPriceList();
-        List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
         Integer total = 0;
-        Integer currentReminder =count;
+        try {
+            Map<String, Integer> priceList = priceService.getPriceList();
+            List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
+            Integer currentReminder = count;
 
-        for (CountOffer offer : countOffers) {
-            if(currentReminder >= offer.getOfferCount()) {
-                Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
-                total += (result.getQuotient() * offer.getOfferPrice());
-                currentReminder = result.getReminder();
+            for (CountOffer offer : countOffers) {
+                if (currentReminder >= offer.getOfferCount()) {
+                    Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
+                    total += (result.getQuotient() * offer.getOfferPrice());
+                    currentReminder = result.getReminder();
+                }
             }
+            total += currentReminder * priceList.get(thisSku);
+        }catch (Exception e){
+            return -1;
         }
-        total += currentReminder * priceList.get(thisSku);
         return total;
     }
 
