@@ -19,23 +19,28 @@ class CheckoutUtil {
 
         Map<String, Integer> itemWiseCount = getSkuCountMap(skus);
 
+
+        //Map<String,Integer> freeItems = offerService.getFreeItems(itemWiseCount);
+
+
         for (String thisSku : itemWiseCount.keySet()) {
-            Integer thisLineValue = 0;
-            Optional<CountOffer> maybeOffer = offerService.getOfferFor(thisSku);
+            // apply Special offer
+            // apply count offer
+            // calculate remaining individual price
 
-            if (maybeOffer.isPresent()) {
-                CountOffer thisCountOffer = maybeOffer.get();
-                Result result = getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
-                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainingCount() * priceList.get(thisSku));
-            } else {
-                if(priceList.containsKey(thisSku)) {
-                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
-                }else{
-                    return -1;
-                }
-            }
-
-            grandTotal = grandTotal + thisLineValue;
+//            if (maybeOffer.isPresent()) {
+//                CountOffer thisCountOffer = maybeOffer.get();
+//                Result result = getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
+//                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainingCount() * priceList.get(thisSku));
+//            } else {
+//                if(priceList.containsKey(thisSku)) {
+//                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
+//                }else{
+//                    return -1;
+//                }
+//            }
+//
+            grandTotal = grandTotal;
         }
         return grandTotal;
     }
@@ -64,3 +69,4 @@ class CheckoutUtil {
 
 
 }
+
