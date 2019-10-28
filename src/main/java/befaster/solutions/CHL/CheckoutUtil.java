@@ -23,6 +23,7 @@ public class CheckoutUtil {
         Map<String, Integer> refinedItemWiseCount = removeFreeItems(getSkuCountMap(skus));
 
         for (String thisSku : refinedItemWiseCount.keySet()) {
+
             List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
 
             Integer thisLineValue = 0;

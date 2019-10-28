@@ -30,7 +30,6 @@ public class CheckoutUtilTest {
     };
 
 
-
     @Before
     public void setUp() {
         checkoutUtil = new CheckoutUtil();
@@ -51,6 +50,11 @@ public class CheckoutUtilTest {
         assertThat(actual.get("E"), equalTo(4));
     }
 
+
+    @Test
+    public void getTotalPrice_shouldReturnTheCorrectValues(){
+        assertThat(checkoutUtil.getTotalPrice("A"), equalTo(50));
+    }
 
 }
 
