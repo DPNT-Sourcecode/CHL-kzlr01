@@ -20,15 +20,23 @@ public class OfferServiceTest {
         }
     };
 
-    private Map<String, Integer> order1 = new HashMap<String, Integer>() {
+    private Map<String, Integer> invalidOrder = new HashMap<String, Integer>() {
         {
-            put("A", 1);
+            put("X", 10);
         }
     };
-    
-    private Map<String, Integer> order1 = new HashMap<String, Integer>() {
+
+    private Map<String, Integer> orderWithoutBuyGetOffer = new HashMap<String, Integer>() {
         {
             put("A", 1);
+            put("B", 10);
+        }
+    };
+    private Map<String, Integer> orderWithBuyGetOffer = new HashMap<String, Integer>() {
+        {
+            put("A", 1);
+            put("B", 10);
+            put("E", 5);
         }
     };
 
@@ -54,11 +62,22 @@ public class OfferServiceTest {
     }
 
     @Test
-    public void getFreeItems_returnEmptyList() {
+    public void getFreeItems_returnEmptyMap() {
+        assertThat( offerService.getFreeItems(invalidOrder), equalTo(Collections.emptyMap()));
+    }
 
-        offerService.getFreeItems()
+    @Test
+    public void getFreeItems_returnEmptyMapWhenThereIsNo_BuyGetOffer() {
+        assertThat( offerService.getFreeItems(orderWithoutBuyGetOffer), equalTo(Collections.emptyMap()));
+    }
+
+
+    @Test
+    public void getFreeItems_returnFreeItemsWhenThereIs_BuyGetOffer() {
+        assertThat( offerService.getFreeItems(orderWithBuyGetOffer), equalTo(Collections.emptyMap()));
     }
 
 
 }
+
 
