@@ -30,9 +30,9 @@ public class CheckoutUtilTest {
     }
 
     @Test
-    public void blah() {
+    public void removeFreeItems_ShouldRemoveItemsUnderSpecialOffer() {
         Map<String, Integer> actual = checkoutUtil.removeFreeItems(countExample1);
-        assertThat(actual.get("B"), equalTo(2));
+        assertThat(actual.get("B"), equalTo(1));
 
     }
 
