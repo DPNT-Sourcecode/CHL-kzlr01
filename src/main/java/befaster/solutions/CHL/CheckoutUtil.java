@@ -15,9 +15,13 @@ public class CheckoutUtil {
 
     public Integer getTotalPrice(String skus) {
         Integer grandTotal = 0;
-        Map<String, Integer> refinedItemWiseCount = removeFreeItems(getSkuCountMap(skus));
-        for (String thisSku : refinedItemWiseCount.keySet()) {
-            grandTotal += calculateTotalForSku(thisSku, refinedItemWiseCount.get(thisSku));
+        try {
+            Map<String, Integer> refinedItemWiseCount = removeFreeItems(getSkuCountMap(skus));
+            for (String thisSku : refinedItemWiseCount.keySet()) {
+                grandTotal += calculateTotalForSku(thisSku, refinedItemWiseCount.get(thisSku));
+            }
+        }catch (Exception e){
+            return -1;
         }
         return grandTotal;
     }
@@ -25,25 +29,19 @@ public class CheckoutUtil {
 
     private Integer calculateTotalForSku(String thisSku, Integer count) {
         Integer total = 0;
-        try {
-            Map<String, Integer> priceList = priceService.getPriceList();
-            List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
-            Integer currentReminder = count;
-
-            for (CountOffer offer : countOffers) {
-                if (currentReminder >= offer.getOfferCount()) {
-                    Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
-                    total += (result.getQuotient() * offer.getOfferPrice());
-                    currentReminder = result.getReminder();
-                }
+        Map<String, Integer> priceList = priceService.getPriceList();
+        List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
+        Integer currentReminder = count;
+        for (CountOffer offer : countOffers) {
+            if (currentReminder >= offer.getOfferCount()) {
+                Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
+                total += (result.getQuotient() * offer.getOfferPrice());
+                currentReminder = result.getReminder();
             }
-            total += currentReminder * priceList.get(thisSku);
-        }catch (Exception e){
-            return -1;
         }
+        total += currentReminder * priceList.get(thisSku);
         return total;
     }
-
 
 
     Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
