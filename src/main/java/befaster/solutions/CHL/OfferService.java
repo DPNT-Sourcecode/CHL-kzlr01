@@ -1,11 +1,12 @@
 package befaster.solutions.CHL;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OfferService {
 
     //Ideally from a persistance
-    private List<CountOffer> currentOffers = new ArrayList<CountOffer>(){
+    private List<CountOffer> countOffers = new ArrayList<CountOffer>(){
         {
             add(new CountOffer("A",5, 200));
             add(new CountOffer("A",3, 130));
@@ -14,14 +15,12 @@ public class OfferService {
     };
 
 
-    public Optional<CountOffer> getOfferFor(String sku){
-        for (CountOffer countOffer : currentOffers){
-            if(countOffer.getSku().equals(sku)) return Optional.of(countOffer);
-        }
-        return Optional.empty();
+    public List<CountOffer> getCountOffersFor(String sku){
+        return countOffers.stream().filter(o -> o.getSku().equals(sku)).collect(Collectors.toList());
     }
 
 }
+
 
 
 
