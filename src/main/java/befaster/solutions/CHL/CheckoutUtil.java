@@ -52,7 +52,13 @@ public class CheckoutUtil {
         for ( String freeItemSku: freeItems.keySet()){
                if(refinedItemWiseCount.containsKey(freeItemSku)) {
 
-                    
+                   Integer currentCount = refinedItemWiseCount.get(freeItemSku);
+                   Integer toRemove = currentCount - freeItems.get(freeItemSku);
+
+                   refinedItemWiseCount.put(freeItemSku, Math.max(0, toRemove));
+
+
+
 
                }
         }
@@ -78,4 +84,5 @@ public class CheckoutUtil {
 
 
 }
+
 
