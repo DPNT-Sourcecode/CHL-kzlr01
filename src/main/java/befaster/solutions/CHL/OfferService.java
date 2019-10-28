@@ -35,10 +35,11 @@ public class OfferService {
                 Integer boughtCount = orderedItems.get(buyGetOffer.getBuySku());
 
                 Result result = mathUtil.getResult(boughtCount, buyGetOffer.getBuyCount());
-                Integer  =result.getQuotient();
-                Integer y =result.getRemainder();
 
-                buyGetOffer.getBuyCount()
+                Integer offerCount =result.getQuotient();
+                Integer freeCount = (buyGetOffer.getFreeSku() * buyGetOffer.getFreeCount()) * offerCount;
+
+                freeItems.put()
 
             }
         }
@@ -47,6 +48,7 @@ public class OfferService {
     }
 
 }
+
 
 
 

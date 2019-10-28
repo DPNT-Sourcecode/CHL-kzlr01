@@ -54,7 +54,7 @@ public class CheckliteSolutionTest {
 
     }
     @Test
-    public void caseWithBuyGetOffer() {
+    public void caseWithAnItemInBuyGetButNotQualified() {
         assertThat(checkliteSolution.checklite("E"), equalTo(40));
 
     }
