@@ -15,7 +15,6 @@ public class CheckoutUtil {
 
     public Integer getTotalPrice(String skus) {
         Integer grandTotal = 0;
-        Map<String, Integer> priceList = priceService.getPriceList();
         Map<String, Integer> refinedItemWiseCount = removeFreeItems(getSkuCountMap(skus));
         for (String thisSku : refinedItemWiseCount.keySet()) {
             grandTotal += calculateTotalForSku(thisSku, refinedItemWiseCount.get(thisSku));
@@ -25,9 +24,11 @@ public class CheckoutUtil {
 
 
     private Integer calculateTotalForSku(String thisSku, Integer count) {
+        Map<String, Integer> priceList = priceService.getPriceList();
         List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
         Integer total = 0;
-
+        Integer currentRemainder =0;
+        
         for (CountOffer offer : countOffers) {
             Result result = mathUtil.getResult(count, offer.getOfferCount());
 
@@ -70,3 +71,4 @@ public class CheckoutUtil {
 
 
 }
+
