@@ -1,16 +1,12 @@
 package befaster.solutions.CHL;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 
 public class OfferServiceTest {
@@ -21,6 +17,18 @@ public class OfferServiceTest {
         {
             add(new CountOffer("A", 5, 200));
             add(new CountOffer("A", 3, 130));
+        }
+    };
+
+    private Map<String, Integer> order1 = new HashMap<String, Integer>() {
+        {
+            put("A", 1);
+        }
+    };
+    
+    private Map<String, Integer> order1 = new HashMap<String, Integer>() {
+        {
+            put("A", 1);
         }
     };
 
@@ -43,8 +51,14 @@ public class OfferServiceTest {
         assertThat(actualOffers.get(0).getOfferPrice(), equalTo(200));
         assertThat(actualOffers.get(1).getOfferCount(), equalTo(3));
         assertThat(actualOffers.get(1).getOfferPrice(), equalTo(130));
+    }
 
+    @Test
+    public void getFreeItems_returnEmptyList() {
+
+        offerService.getFreeItems()
     }
 
 
 }
+

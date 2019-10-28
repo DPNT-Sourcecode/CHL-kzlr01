@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class OfferService {
 
     private MathUtil mathUtil = new MathUtil();
-    //Ideally from a persistance
+    //Ideally from a persistance or injected repo which can be mocked in the unit test
     private List<CountOffer> countOffers = new ArrayList<CountOffer>() {
         {
             add(new CountOffer("A", 5, 200));
@@ -14,7 +14,8 @@ public class OfferService {
             add(new CountOffer("B", 2, 45));
         }
     };
-    //Ideally from a persistance
+
+    //Ideally from a persistance or injected repo which can be mocked in the unit test
     private List<BuyGetOffer> buyGetOffers = new ArrayList<BuyGetOffer>() {
         {
             add(new BuyGetOffer("E", 2, "B", 1));
@@ -50,6 +51,7 @@ public class OfferService {
     }
 
 }
+
 
 
 

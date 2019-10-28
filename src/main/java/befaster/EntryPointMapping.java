@@ -7,7 +7,6 @@ import befaster.solutions.FIZ.FizzBuzzSolution;
 import befaster.solutions.HLO.HelloSolution;
 import befaster.solutions.IRNG.IntRangeSolution;
 import befaster.solutions.SUM.SumSolution;
-import befaster.solutions.exceptions.InvalidComputeParamException;
 import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
@@ -74,3 +73,4 @@ class EntryPointMapping {
         return checkliteSolution.checklite(p.get(0).getAsString());
     }
 }
+
