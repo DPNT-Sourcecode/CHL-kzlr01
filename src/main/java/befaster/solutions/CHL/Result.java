@@ -1,27 +1,27 @@
 package befaster.solutions.CHL;
 
 class Result {
-    private Integer offerCount;
-    private Integer remainingCount;
+    private Integer quotient;
+    private Integer remainder;
 
-    public Result(Integer offerCount, Integer remainingCount) {
-        this.offerCount = offerCount;
-        this.remainingCount = remainingCount;
+    Result(Integer quotient, Integer remainder) {
+        this.quotient = quotient;
+        this.remainder = remainder;
     }
 
-    public Integer getOfferCount() {
-        return offerCount;
+    public Integer getQuotient() {
+        return quotient;
     }
 
-    public void setOfferCount(Integer offerCount) {
-        this.offerCount = offerCount;
+    public void setQuotient(Integer quotient) {
+        this.quotient = quotient;
     }
 
-    public Integer getRemainingCount() {
-        return remainingCount;
+    public Integer getRemainder() {
+        return remainder;
     }
 
-    public void setRemainingCount(Integer remainingCount) {
-        this.remainingCount = remainingCount;
+    public void setRemainder(Integer remainder) {
+        this.remainder = remainder;
     }
 }

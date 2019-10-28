@@ -32,7 +32,7 @@ class CheckoutUtil {
 //            if (maybeOffer.isPresent()) {
 //                CountOffer thisCountOffer = maybeOffer.get();
 //                Result result = mathUtil.getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
-//                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainingCount() * priceList.get(thisSku));
+//                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainder() * priceList.get(thisSku));
 //            } else {
 //                if(priceList.containsKey(thisSku)) {
 //                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);

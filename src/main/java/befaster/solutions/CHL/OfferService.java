@@ -34,7 +34,8 @@ public class OfferService {
             if(orderedItems.containsKey(buyGetOffer.getBuySku())){
                 Integer boughtCount = orderedItems.get(buyGetOffer.getBuySku());
 
-                mathUtil.ge
+                Result result = mathUtil.getResult(boughtCount, buyGetOffer.getBuyCount());
+                result.getOfferCount()
 
                 buyGetOffer.getBuyCount()
 
