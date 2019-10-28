@@ -14,11 +14,9 @@ public class OfferService {
         }
     };
     //Ideally from a persistance
-    private List<CountOffer> buyGetOffers = new ArrayList<Bu>(){
+    private List<BuyGetOffer> buyGetOffers = new ArrayList<BuyGetOffer>(){
         {
-            add(new CountOffer("A",5, 200));
-            add(new CountOffer("A",3, 130));
-            add(new CountOffer("B",2, 45));
+            add(new BuyGetOffer("E",2, "B", 1));
         }
     };
 
@@ -35,6 +33,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
