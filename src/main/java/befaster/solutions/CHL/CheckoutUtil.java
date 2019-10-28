@@ -56,6 +56,7 @@ public class CheckoutUtil {
                 Integer toRemove = currentCount - freeItems.get(thisFreeItemSku);
 
                 Integer finalValue =0;
+
                 if(currentCount % offerCount == 0)
                     finalValue = Math.max(0, toRemove) + 1 ;
                 else
@@ -87,3 +88,4 @@ public class CheckoutUtil {
 
 
 }
+
