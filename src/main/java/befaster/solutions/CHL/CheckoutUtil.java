@@ -15,48 +15,21 @@ public class CheckoutUtil {
 
 
     public Integer getTotalPrice(String skus) {
-
         Integer grandTotal = 0;
-
         Map<String, Integer> priceList = priceService.getPriceList();
-
         Map<String, Integer> refinedItemWiseCount = removeFreeItems(getSkuCountMap(skus));
-
         for (String thisSku : refinedItemWiseCount.keySet()) {
-
-            List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
-
-            Integer thisLineValue = 0;
-
-            if (!countOffers.isEmpty()) {
-
-                for (CountOffer countOffer : countOffers) {
-                    CountOffer thisCountOffer = maybeOffer.get();
-                    Result result = mathUtil.getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
-                    thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainder() * priceList.get(thisSku));
-
-                }
-
-                if (priceList.containsKey(thisSku)) {
-                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
-                } else {
-                    return -1;
-                }
-
-            } else {
-                if (priceList.containsKey(thisSku)) {
-                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
-                } else {
-                    return -1;
-                }
-            }
-
-            grandTotal = grandTotal + thisLineValue;
+            grandTotal += calculateTotalForSku(thisSku, refinedItemWiseCount.get(thisSku));
         }
-
         return grandTotal;
     }
 
+
+    private Integer calculateTotalForSku(String thisSku, Integer count){
+        List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
+
+
+    }
 
     Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
         Map<String, Integer> refinedItemWiseCount = itemWiseCount;
@@ -93,6 +66,3 @@ public class CheckoutUtil {
 
 
 }
-
-
-
