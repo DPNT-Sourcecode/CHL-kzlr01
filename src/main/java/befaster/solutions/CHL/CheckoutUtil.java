@@ -3,7 +3,6 @@ package befaster.solutions.CHL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CheckoutUtil {
@@ -25,10 +24,15 @@ public class CheckoutUtil {
     }
 
 
-    private Integer calculateTotalForSku(String thisSku, Integer count){
+    private Integer calculateTotalForSku(String thisSku, Integer count) {
         List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
+        Integer total = 0;
 
+        for (CountOffer offer : countOffers) {
+            Result result = mathUtil.getResult(count, offer.getOfferCount());
 
+        }
+        return total;
     }
 
     Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
@@ -44,7 +48,7 @@ public class CheckoutUtil {
             }
         }
         return refinedItemWiseCount.entrySet().stream().filter(item -> item.getValue() > 0)
-                .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
 
