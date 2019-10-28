@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CheckoutUtil {
 
@@ -68,7 +69,8 @@ public class CheckoutUtil {
                 refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove));
             }
         }
-        return refinedItemWiseCount;
+        return refinedItemWiseCount.entrySet().stream().filter(item -> item.getValue() > 0)
+                .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue));
     }
 
 
@@ -90,5 +92,6 @@ public class CheckoutUtil {
 
 
 }
+
 
 
