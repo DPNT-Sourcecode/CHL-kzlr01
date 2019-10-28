@@ -37,6 +37,11 @@ public class OfferService {
                 Result result = mathUtil.getResult(boughtCount, buyGetOffer.getBuyCount());
 
                 Integer offerCount =result.getQuotient();
+
+                if(offerCount>0){
+                    freeItems.put(buyGetOffer.getFreeSku(), offerCount)
+                }
+
                 Integer freeCount = buyGetOffer.getFreeCount()
 
                 freeItems.put()
@@ -48,6 +53,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
