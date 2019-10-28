@@ -52,11 +52,11 @@ public class CheckoutUtilTest {
 
     @Test
     public void getTotalPrice_shouldReturnTheCorrectValues(){
-//        assertThat(checkoutUtil.getTotalPrice("A"), equalTo(50));
-//        assertThat(checkoutUtil.getTotalPrice("AB"), equalTo(80));
-//        assertThat(checkoutUtil.getTotalPrice("AAAB"), equalTo(130 + 30));
-//        assertThat(checkoutUtil.getTotalPrice("AAABAA"), equalTo(200 + 30));
-//        assertThat(checkoutUtil.getTotalPrice("AAABAAC"), equalTo(200 + 30 + 20));
+        assertThat(checkoutUtil.getTotalPrice("A"), equalTo(50));
+        assertThat(checkoutUtil.getTotalPrice("AB"), equalTo(80));
+        assertThat(checkoutUtil.getTotalPrice("AAAB"), equalTo(130 + 30));
+        assertThat(checkoutUtil.getTotalPrice("AAABAA"), equalTo(200 + 30));
+        assertThat(checkoutUtil.getTotalPrice("AAABAAC"), equalTo(200 + 30 + 20));
         assertThat(checkoutUtil.getTotalPrice("EEB"), equalTo(80 + 0));
     }
 

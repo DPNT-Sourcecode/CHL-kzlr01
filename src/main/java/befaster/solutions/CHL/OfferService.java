@@ -40,7 +40,7 @@ public class OfferService {
                         .getResult(orderedItems.get(buySku), buyGetOffer.getBuyCount())
                         .getQuotient();
 
-                if (quotient > 1) {
+                if (quotient > 0) {
                     if (freeItems.containsKey(freeSku))
                         freeItems.put(freeSku, freeItems.get(freeSku) + quotient);
                     else
@@ -53,7 +53,6 @@ public class OfferService {
     }
 
 }
-
 
 
 
