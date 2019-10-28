@@ -30,10 +30,13 @@ public class CheckoutUtil {
         Integer currentReminder =count;
 
         for (CountOffer offer : countOffers) {
-            Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
-            total += (result.getQuotient()  * offer.getOfferPrice());
-            currentReminder = result.getReminder();
+            if(offer.getOfferCount() >= currentReminder) {
+                Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
+                total += (result.getQuotient() * offer.getOfferPrice());
+                currentReminder = result.getReminder();
+            }
         }
+        total += currentReminder * priceList.get(thisSku);
         return total;
     }
 
