@@ -53,4 +53,9 @@ public class CheckliteSolutionTest {
         assertThat(checkliteSolution.checklite("AEEB"), equalTo(80+50+0));
 
     }
+    @Test
+    public void caseWithBuyGetOffer() {
+        assertThat(checkliteSolution.checklite("E"), equalTo(40));
+
+    }
 }

@@ -35,7 +35,8 @@ public class OfferService {
                 Integer boughtCount = orderedItems.get(buyGetOffer.getBuySku());
 
                 Result result = mathUtil.getResult(boughtCount, buyGetOffer.getBuyCount());
-                result.getOfferCount()
+                Integer  =result.getQuotient();
+                Integer y =result.getRemainder();
 
                 buyGetOffer.getBuyCount()
 
