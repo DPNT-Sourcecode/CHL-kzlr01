@@ -7,45 +7,42 @@ public class OfferService {
 
     private MathUtil mathUtil = new MathUtil();
     //Ideally from a persistance
-    private List<CountOffer> countOffers = new ArrayList<CountOffer>(){
+    private List<CountOffer> countOffers = new ArrayList<CountOffer>() {
         {
-            add(new CountOffer("A",5, 200));
-            add(new CountOffer("A",3, 130));
-            add(new CountOffer("B",2, 45));
+            add(new CountOffer("A", 5, 200));
+            add(new CountOffer("A", 3, 130));
+            add(new CountOffer("B", 2, 45));
         }
     };
     //Ideally from a persistance
-    private List<BuyGetOffer> buyGetOffers = new ArrayList<BuyGetOffer>(){
+    private List<BuyGetOffer> buyGetOffers = new ArrayList<BuyGetOffer>() {
         {
-            add(new BuyGetOffer("E",2, "B", 1));
+            add(new BuyGetOffer("E", 2, "B", 1));
         }
     };
 
 
-    public List<CountOffer> getCountOffersFor(String sku){
+    public List<CountOffer> getCountOffersFor(String sku) {
         return countOffers.stream().filter(o -> o.getSku().equals(sku)).collect(Collectors.toList());
     }
 
 
-    public Map<String,Integer> getFreeItems( Map<String, Integer> orderedItems){
-        Map<String,Integer> freeItems = new HashMap<>();
+    public Map<String, Integer> getFreeItems(Map<String, Integer> orderedItems) {
+        Map<String, Integer> freeItems = new HashMap<>();
 
-        for (BuyGetOffer buyGetOffer: buyGetOffers) {
-            if(orderedItems.containsKey(buyGetOffer.getBuySku())){
-                Integer boughtCount = orderedItems.get(buyGetOffer.getBuySku());
+        for (BuyGetOffer buyGetOffer : buyGetOffers) {
+            if (orderedItems.containsKey(buyGetOffer.getBuySku())) {
+                Integer quotient = mathUtil
+                        .getResult(orderedItems.get(buyGetOffer.getBuySku()), buyGetOffer.getBuyCount())
+                        .getQuotient();
 
-                Result result = mathUtil.getResult(boughtCount, buyGetOffer.getBuyCount());
-
-                Integer offerCount =result.getQuotient();
-
-                if(offerCount>0){
-                    freeItems.put(buyGetOffer.getFreeSku(), offerCount)
+                if (quotient > 1) {
+                    String freeSku = buyGetOffer.getFreeSku();
+                    if (freeItems.containsKey(freeSku))
+                        freeItems.put(freeSku, freeItems.get(freeSku) + quotient);
+                    else
+                        freeItems.put(buyGetOffer.getFreeSku(), quotient);
                 }
-
-                Integer freeCount = buyGetOffer.getFreeCount()
-
-                freeItems.put()
-
             }
         }
 
@@ -53,6 +50,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
