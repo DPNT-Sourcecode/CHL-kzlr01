@@ -20,7 +20,7 @@ public class CheckoutUtil {
             for (String thisSku : refinedItemWiseCount.keySet()) {
                 grandTotal += calculateTotalForSku(thisSku, refinedItemWiseCount.get(thisSku));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return -1;
         }
         return grandTotal;
@@ -52,6 +52,7 @@ public class CheckoutUtil {
         for (String thisFreeItemSku : freeItems.keySet()) {
             if (refinedItemWiseCount.containsKey(thisFreeItemSku)) {
                 Integer currentCount = refinedItemWiseCount.get(thisFreeItemSku);
+                Integer offerCount = freeItems.get(thisFreeItemSku);
                 Integer toRemove = currentCount - freeItems.get(thisFreeItemSku);
                 refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove));
             }
