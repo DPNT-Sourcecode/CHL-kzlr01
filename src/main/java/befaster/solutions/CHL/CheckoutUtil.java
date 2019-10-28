@@ -44,22 +44,16 @@ public class CheckoutUtil {
     }
 
 
-    private Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
+     Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
         Map<String, Integer> refinedItemWiseCount = itemWiseCount;
 
         Map<String, Integer> freeItems = offerService.getFreeItems(itemWiseCount);
 
-        for ( String freeItemSku: freeItems.keySet()){
-               if(refinedItemWiseCount.containsKey(freeItemSku)) {
-
-                   Integer currentCount = refinedItemWiseCount.get(freeItemSku);
-                   Integer toRemove = currentCount - freeItems.get(freeItemSku);
-
-                   refinedItemWiseCount.put(freeItemSku, Math.max(0, toRemove));
-
-
-
-
+        for ( String thisFreeItemSku: freeItems.keySet()){
+               if(refinedItemWiseCount.containsKey(thisFreeItemSku)) {
+                   Integer currentCount = refinedItemWiseCount.get(thisFreeItemSku);
+                   Integer toRemove = currentCount - freeItems.get(thisFreeItemSku);
+                   refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove));
                }
         }
         return refinedItemWiseCount;
