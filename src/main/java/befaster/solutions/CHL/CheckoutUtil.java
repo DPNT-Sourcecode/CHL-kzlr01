@@ -56,11 +56,14 @@ public class CheckoutUtil {
                 Integer toRemove = currentCount - freeItems.get(thisFreeItemSku);
 
                 Integer finalValue =0;
+                System.out.println(currentCount);
+                System.out.println(offerCount);
+                System.out.println(toRemove);
 
                 if(currentCount % offerCount == 0)
-                    finalValue = Math.max(0, toRemove) + 1 ;
+                    finalValue = Math.max(0, toRemove) ;
                 else
-                    finalValue = Math.max(0, toRemove);
+                    finalValue = Math.max(0, toRemove) + 1;
 
                 refinedItemWiseCount.put(thisFreeItemSku, finalValue );
             }
