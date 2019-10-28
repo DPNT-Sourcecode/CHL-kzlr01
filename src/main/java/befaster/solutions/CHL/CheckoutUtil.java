@@ -3,7 +3,6 @@ package befaster.solutions.CHL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 class CheckoutUtil {
 
@@ -22,12 +21,12 @@ class CheckoutUtil {
 
         for (String thisSku : itemWiseCount.keySet()) {
             Integer thisLineValue = 0;
-            Optional<Offer> maybeOffer = offerService.getOfferFor(thisSku);
+            Optional<CountOffer> maybeOffer = offerService.getOfferFor(thisSku);
 
             if (maybeOffer.isPresent()) {
-                Offer thisOffer = maybeOffer.get();
-                Result result = getResult(itemWiseCount.get(thisSku), thisOffer.getOfferCount());
-                thisLineValue = (result.getOfferCount() * thisOffer.getOfferPrice()) + (result.getRemainingCount() * priceList.get(thisSku));
+                CountOffer thisCountOffer = maybeOffer.get();
+                Result result = getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
+                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainingCount() * priceList.get(thisSku));
             } else {
                 if(priceList.containsKey(thisSku)) {
                     thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);

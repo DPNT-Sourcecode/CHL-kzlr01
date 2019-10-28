@@ -1,11 +1,11 @@
 package befaster.solutions.CHL;
 
-public class Offer {
+public class CountOffer {
     private String sku;
     private Integer offerCount;
     private Integer offerPrice;
 
-    public Offer(String sku, Integer offerCount, Integer offerPrice) {
+    public CountOffer(String sku, Integer offerCount, Integer offerPrice) {
         this.sku = sku;
         this.offerCount = offerCount;
         this.offerPrice = offerPrice;

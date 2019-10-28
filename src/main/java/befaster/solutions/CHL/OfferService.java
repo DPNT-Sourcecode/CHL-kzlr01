@@ -1,29 +1,28 @@
 package befaster.solutions.CHL;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class OfferService {
 
     //Ideally from a persistance
-    private Set<Offer> currentOffers = new HashSet<Offer>(){
+    private List<CountOffer> currentOffers = new ArrayList<CountOffer>(){
         {
-            add(new Offer("A",5, 130));
-            add(new Offer("A",3, 130));
-            add(new Offer("B",2, 45));
+            add(new CountOffer("A",5, 200));
+            add(new CountOffer("A",3, 130));
+            add(new CountOffer("B",2, 45));
         }
     };
 
 
-    public Optional<Offer> getOfferFor(String sku){
-        for (Offer offer : currentOffers){
-            if(offer.getSku().equals(sku)) return Optional.of(offer);
+    public Optional<CountOffer> getOfferFor(String sku){
+        for (CountOffer countOffer : currentOffers){
+            if(countOffer.getSku().equals(sku)) return Optional.of(countOffer);
         }
         return Optional.empty();
     }
 
 }
+
 
 
 
