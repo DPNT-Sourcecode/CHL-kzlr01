@@ -57,7 +57,7 @@ public class CheckoutUtilTest {
 //        assertThat(checkoutUtil.getTotalPrice("AAAB"), equalTo(130 + 30));
 //        assertThat(checkoutUtil.getTotalPrice("AAABAA"), equalTo(200 + 30));
 //        assertThat(checkoutUtil.getTotalPrice("AAABAAC"), equalTo(200 + 30 + 20));
-        assertThat(checkoutUtil.getTotalPrice("EEB"), equalTo(200));
+        assertThat(checkoutUtil.getTotalPrice("EEB"), equalTo(80 + 0));
     }
 
 }
