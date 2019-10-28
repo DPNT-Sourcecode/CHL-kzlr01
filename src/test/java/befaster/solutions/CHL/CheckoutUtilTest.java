@@ -18,6 +18,13 @@ public class CheckoutUtilTest {
         {
             put("A", 1);
             put("B", 3);
+        }
+    };
+
+    private Map<String, Integer> countExample2 = new HashMap<String, Integer>() {
+        {
+            put("A", 1);
+            put("B", 3);
             put("E", 4);  // to remove 2 B
         }
     };
@@ -30,11 +37,20 @@ public class CheckoutUtilTest {
     }
 
     @Test
-    public void removeFreeItems_ShouldRemoveItemsUnderSpecialOffer() {
+    public void removeFreeItems_ShouldReturnTheSameListWhenThereIsNo_SpecialOffer() {
         Map<String, Integer> actual = checkoutUtil.removeFreeItems(countExample1);
-        assertThat(actual.get("B"), equalTo(1));
+        assertThat(actual.get("A"), equalTo(1));
+        assertThat(actual.get("B"), equalTo(3));
+    }
 
+    @Test
+    public void removeFreeItems_ShouldRemoveItemsUnderSpecialOffer() {
+        Map<String, Integer> actual = checkoutUtil.removeFreeItems(countExample2);
+        assertThat(actual.get("A"), equalTo(1));
+        assertThat(actual.get("B"), equalTo(1));
+        assertThat(actual.get("E"), equalTo(4));
     }
 
 
 }
+
