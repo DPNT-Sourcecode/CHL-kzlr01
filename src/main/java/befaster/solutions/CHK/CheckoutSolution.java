@@ -1,9 +1,14 @@
 package befaster.solutions.CHK;
 
-import befaster.runner.SolutionNotImplementedException;
+
+import befaster.solutions.CHL.CheckoutUtil;
 
 public class CheckoutSolution {
-    public Integer checkout(String skus) {
-        throw new SolutionNotImplementedException();
+
+    CheckoutUtil checkoutUtil = new CheckoutUtil();
+
+    public Integer checklite(String skus) {
+        return checkoutUtil.getTotalPrice(skus);
     }
 }
+

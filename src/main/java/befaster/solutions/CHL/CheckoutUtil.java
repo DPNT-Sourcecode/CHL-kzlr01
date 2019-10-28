@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-class CheckoutUtil {
+public class CheckoutUtil {
 
 
     private PriceService priceService = new PriceService();
@@ -12,7 +12,7 @@ class CheckoutUtil {
     private MathUtil mathUtil = new MathUtil();
 
 
-    Integer getTotalPrice(String skus) {
+    public Integer getTotalPrice(String skus) {
 
         Integer grandTotal = 0;
 
