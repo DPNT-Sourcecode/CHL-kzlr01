@@ -31,11 +31,13 @@ public class CheckoutUtil {
 
         for (CountOffer offer : countOffers) {
             Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
-            total += (result.getQuotient()  * offer.getOfferPrice())
+            total += (result.getQuotient()  * offer.getOfferPrice());
             currentReminder = result.getReminder();
         }
         return total;
     }
+
+
 
     Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
         Map<String, Integer> refinedItemWiseCount = itemWiseCount;
@@ -72,5 +74,6 @@ public class CheckoutUtil {
 
 
 }
+
 
 
