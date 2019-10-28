@@ -9,6 +9,7 @@ class CheckoutUtil {
 
     private PriceService priceService = new PriceService();
     private OfferService offerService = new OfferService();
+    private MathUtil mathUtil = new MathUtil();
 
 
     Integer getTotalPrice(String skus) {
@@ -30,7 +31,7 @@ class CheckoutUtil {
 
 //            if (maybeOffer.isPresent()) {
 //                CountOffer thisCountOffer = maybeOffer.get();
-//                Result result = getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
+//                Result result = mathUtil.getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
 //                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainingCount() * priceList.get(thisSku));
 //            } else {
 //                if(priceList.containsKey(thisSku)) {
