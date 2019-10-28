@@ -2,11 +2,11 @@ package befaster.solutions.CHL;
 
 class Result {
     private Integer quotient;
-    private Integer remainder;
+    private Integer reminder;
 
-    Result(Integer quotient, Integer remainder) {
+    Result(Integer quotient, Integer reminder) {
         this.quotient = quotient;
-        this.remainder = remainder;
+        this.reminder = reminder;
     }
 
     public Integer getQuotient() {
@@ -17,11 +17,11 @@ class Result {
         this.quotient = quotient;
     }
 
-    public Integer getRemainder() {
-        return remainder;
+    public Integer getReminder() {
+        return reminder;
     }
 
-    public void setRemainder(Integer remainder) {
-        this.remainder = remainder;
+    public void setReminder(Integer reminder) {
+        this.reminder = reminder;
     }
 }
