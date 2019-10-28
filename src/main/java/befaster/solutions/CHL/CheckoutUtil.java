@@ -20,8 +20,6 @@ public class CheckoutUtil {
 
         Map<String, Integer> itemWiseCount = getSkuCountMap(skus);
 
-        Map<String,Integer> freeItems = offerService.getFreeItems(itemWiseCount);
-
 
         for (String thisSku : itemWiseCount.keySet()) {
             // apply Special offer
@@ -46,8 +44,20 @@ public class CheckoutUtil {
     }
 
 
-    private
+    private Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
+        Map<String, Integer> refinedItemWiseCount = itemWiseCount;
 
+        Map<String, Integer> freeItems = offerService.getFreeItems(itemWiseCount);
+
+        for ( String freeItemSku: freeItems.keySet()){
+               if(refinedItemWiseCount.containsKey(freeItemSku)) {
+
+                    
+
+               }
+        }
+        return refinedItemWiseCount;
+    }
 
 
     private Map<String, Integer> getSkuCountMap(String skus) {
@@ -68,3 +78,4 @@ public class CheckoutUtil {
 
 
 }
+
