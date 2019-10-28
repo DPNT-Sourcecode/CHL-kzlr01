@@ -46,10 +46,6 @@ class CheckoutUtil {
     }
 
 
-    private Result getResult(Integer total, Integer offer) {
-        return new Result(total / offer, total % offer);
-    }
-
 
     private Map<String, Integer> getSkuCountMap(String skus) {
         Map<String, Integer> result = new HashMap<>();
@@ -69,4 +65,3 @@ class CheckoutUtil {
 
 
 }
-

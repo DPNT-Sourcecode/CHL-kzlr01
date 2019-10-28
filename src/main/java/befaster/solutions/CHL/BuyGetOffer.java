@@ -47,4 +47,3 @@ public class BuyGetOffer {
         this.freeCount = freeCount;
     }
 }
-
