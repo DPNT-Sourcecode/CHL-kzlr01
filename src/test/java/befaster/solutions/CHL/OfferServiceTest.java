@@ -36,7 +36,7 @@ public class OfferServiceTest {
         {
             put("A", 1);
             put("B", 10);
-            put("E", 5);
+            put("E", 15);
         }
     };
 
@@ -74,10 +74,12 @@ public class OfferServiceTest {
 
     @Test
     public void getFreeItems_returnFreeItemsWhenThereIs_BuyGetOffer() {
-        assertThat( offerService.getFreeItems(orderWithBuyGetOffer), equalTo(Collections.emptyMap()));
+        Map<String,Integer> actual = offerService.getFreeItems(orderWithBuyGetOffer);
+        assertThat( actual.get("B"), equalTo(7));
     }
 
 
 }
+
 
 

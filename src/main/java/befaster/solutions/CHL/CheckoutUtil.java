@@ -20,8 +20,7 @@ public class CheckoutUtil {
 
         Map<String, Integer> itemWiseCount = getSkuCountMap(skus);
 
-
-        //Map<String,Integer> freeItems = offerService.getFreeItems(itemWiseCount);
+        Map<String,Integer> freeItems = offerService.getFreeItems(itemWiseCount);
 
 
         for (String thisSku : itemWiseCount.keySet()) {
@@ -45,6 +44,9 @@ public class CheckoutUtil {
         }
         return grandTotal;
     }
+
+
+    private
 
 
 
