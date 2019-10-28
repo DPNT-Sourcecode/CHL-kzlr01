@@ -67,7 +67,7 @@ class EntryPointMapping {
     }
 
     Object checkout(List<JsonElement> p) {
-        return checkoutSolution.checkout(p.get(0).getAsString());
+        return checkoutSolution.checklite(p.get(0).getAsString());
     }
 
     Object checklite(List<JsonElement> p) {

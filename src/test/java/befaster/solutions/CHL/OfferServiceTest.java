@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -22,23 +23,16 @@ public class OfferServiceTest {
     }
 
     @Test
-    public void whenEmptySKus() {
-        assertThat(offerService.getCountOffersFor("A"), equalTo(new ArrayList<>()));
+    public void getCountOffersFor_returnsEmptyListWhenNoOfferForSku() {
+        assertThat(offerService.getCountOffersFor("X"), equalTo(Collections.emptyList()));
 
     }
 
     @Test
-    public void whenEmSKus() {
-        assertThat(checkliteSolution.checklite(""), equalTo(-1));
+    public void getCountOffersFor_returnsOfferList() {
+        assertThat(offerService.getCountOffersFor("A"), equalTo(Collections.emptyList()));
 
     }
 
-    @Test
-    public void caseWithJustOneCount() {
-        assertThat(checkliteSolution.checklite("A"), equalTo(50));
-        assertThat(checkliteSolution.checklite("B"), equalTo(30));
-        assertThat(checkliteSolution.checklite("E"), equalTo(40));
-
-    }
 
 }
