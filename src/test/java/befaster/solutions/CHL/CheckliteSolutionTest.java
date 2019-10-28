@@ -30,4 +30,11 @@ public class CheckliteSolutionTest {
         assertThat( checkliteSolution.checklite(""), equalTo(-1));
 
     }
+    @Test
+    public void caseWithJustOneCount() {
+        assertThat( checkliteSolution.checklite("A"), equalTo(50));
+        assertThat( checkliteSolution.checklite("B"), equalTo(30));
+        assertThat( checkliteSolution.checklite("E"), equalTo(40));
+
+    }
 }
