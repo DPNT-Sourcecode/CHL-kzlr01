@@ -27,12 +27,12 @@ public class CheckoutUtil {
         Map<String, Integer> priceList = priceService.getPriceList();
         List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
         Integer total = 0;
-        Integer currentReminder =0;
+        Integer currentReminder =count;
 
         for (CountOffer offer : countOffers) {
-            Result result = mathUtil.getResult(count, offer.getOfferCount());
-
-
+            Result result = mathUtil.getResult(currentReminder, offer.getOfferCount());
+            total += (result.getQuotient()  * offer.getOfferPrice())
+            currentReminder = result.getReminder();
         }
         return total;
     }
@@ -72,4 +72,5 @@ public class CheckoutUtil {
 
 
 }
+
 
