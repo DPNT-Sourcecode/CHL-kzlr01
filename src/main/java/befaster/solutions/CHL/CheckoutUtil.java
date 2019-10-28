@@ -1,6 +1,7 @@
 package befaster.solutions.CHL;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,25 +20,25 @@ public class CheckoutUtil {
         Map<String, Integer> priceList = priceService.getPriceList();
 
         Map<String, Integer> itemWiseCount = getSkuCountMap(skus);
+        Map<String, Integer> refinedItemWiseCount = removeFreeItems(itemWiseCount);
 
 
-        for (String thisSku : itemWiseCount.keySet()) {
-            // apply Special offer
-            // apply count offer
-            // calculate remaining individual price
 
-//            if (maybeOffer.isPresent()) {
-//                CountOffer thisCountOffer = maybeOffer.get();
-//                Result result = mathUtil.getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
-//                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainder() * priceList.get(thisSku));
-//            } else {
-//                if(priceList.containsKey(thisSku)) {
-//                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
-//                }else{
-//                    return -1;
-//                }
-//            }
-//
+        for (String thisSku : refinedItemWiseCount.keySet()) {
+            List<CountOffer> countOffers = offerService.getCountOffersFor(thisSku);
+
+            if (maybeOffer.isPresent()) {
+                CountOffer thisCountOffer = maybeOffer.get();
+                Result result = mathUtil.getResult(itemWiseCount.get(thisSku), thisCountOffer.getOfferCount());
+                thisLineValue = (result.getOfferCount() * thisCountOffer.getOfferPrice()) + (result.getRemainder() * priceList.get(thisSku));
+            } else {
+                if(priceList.containsKey(thisSku)) {
+                    thisLineValue = itemWiseCount.get(thisSku) * priceList.get(thisSku);
+                }else{
+                    return -1;
+                }
+            }
+
             grandTotal = grandTotal;
         }
         return grandTotal;
