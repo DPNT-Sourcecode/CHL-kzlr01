@@ -27,12 +27,19 @@ public class OfferService {
 
 
     public Map<String,Integer> getFreeItems( Map<String, Integer> orderedItems){
+        Map<String,Integer> freeItems = new HashMap<>();
 
+        for (BuyGetOffer buyGetOffer: buyGetOffers) {
+            if(orderedItems.containsKey(buyGetOffer.getBuySku()){
 
+            }
+        }
 
+        return freeItems;
     }
 
 }
+
 
 
 
