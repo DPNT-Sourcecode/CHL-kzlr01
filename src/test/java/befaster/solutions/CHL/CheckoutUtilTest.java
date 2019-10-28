@@ -31,8 +31,8 @@ public class CheckoutUtilTest {
 
     @Test
     public void blah() {
-        assertThat(checkoutUtil.removeFreeItems()
-                .getCountOffersFor("X"), equalTo(Collections.emptyList()));
+        Map<String, Integer> actual = checkoutUtil.removeFreeItems(countExample1);
+        assertThat(actual.get("B"), equalTo(2));
 
     }
 
