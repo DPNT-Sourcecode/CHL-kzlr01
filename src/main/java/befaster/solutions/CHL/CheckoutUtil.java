@@ -54,23 +54,12 @@ public class CheckoutUtil {
                 Integer currentCount = refinedItemWiseCount.get(thisFreeItemSku);
                 Integer offerCount = freeItems.get(thisFreeItemSku);
                 Integer toRemove = 0;
-
-
-                //Integer finalValue =0;
-
-
-                if(currentCount % offerCount == 0)
+                if (currentCount % offerCount == 0)
                     toRemove = currentCount - freeItems.get(thisFreeItemSku) + 1;
-                    //finalValue = Math.max(0, toRemove) ;
                 else
-                    toRemove = currentCount - freeItems.get(thisFreeItemSku) ;
-                    //finalValue = Math.max(0, toRemove) +1;
-
-                System.out.println(currentCount);
-                System.out.println(offerCount);
-                System.out.println(toRemove);
-                
-                refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove) );
+                    toRemove = currentCount - freeItems.get(thisFreeItemSku);
+                if (currentCount.equals(offerCount)) toRemove = 0;
+                refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove));
             }
         }
         return refinedItemWiseCount.entrySet().stream().filter(item -> item.getValue() > 0)
