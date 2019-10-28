@@ -32,13 +32,15 @@ public class OfferService {
         Map<String, Integer> freeItems = new HashMap<>();
 
         for (BuyGetOffer buyGetOffer : buyGetOffers) {
-            if (orderedItems.containsKey(buyGetOffer.getBuySku())) {
+            String freeSku = buyGetOffer.getFreeSku();
+            String buySku = buyGetOffer.getBuySku();
+
+            if (orderedItems.containsKey(buySku)) {
                 Integer quotient = mathUtil
-                        .getResult(orderedItems.get(buyGetOffer.getBuySku()), buyGetOffer.getBuyCount())
+                        .getResult(orderedItems.get(buySku), buyGetOffer.getBuyCount())
                         .getQuotient();
 
                 if (quotient > 1) {
-                    String freeSku = buyGetOffer.getFreeSku();
                     if (freeItems.containsKey(freeSku))
                         freeItems.put(freeSku, freeItems.get(freeSku) + quotient);
                     else
@@ -51,6 +53,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
