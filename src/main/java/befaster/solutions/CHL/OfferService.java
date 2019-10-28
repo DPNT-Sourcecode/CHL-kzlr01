@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class OfferService {
 
+    private MathUtil mathUtil = new MathUtil();
     //Ideally from a persistance
     private List<CountOffer> countOffers = new ArrayList<CountOffer>(){
         {
@@ -30,7 +31,12 @@ public class OfferService {
         Map<String,Integer> freeItems = new HashMap<>();
 
         for (BuyGetOffer buyGetOffer: buyGetOffers) {
-            if(orderedItems.containsKey(buyGetOffer.getBuySku()){
+            if(orderedItems.containsKey(buyGetOffer.getBuySku())){
+                Integer boughtCount = orderedItems.get(buyGetOffer.getBuySku());
+
+                mathUtil.ge
+
+                buyGetOffer.getBuyCount()
 
             }
         }
@@ -39,6 +45,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
