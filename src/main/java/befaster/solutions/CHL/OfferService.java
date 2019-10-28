@@ -20,9 +20,9 @@ public class OfferService {
     private List<BuyGetOffer> buyGetOffers = new ArrayList<BuyGetOffer>() {
         {
             add(new BuyGetOffer("E", 2, "B", 1));
+            add(new BuyGetOffer("F", 2, "F", 1));
         }
     };
-
 
     public List<CountOffer> getCountOffersFor(String sku) {
         return countOffers.stream().filter(o -> o.getSku().equals(sku)).collect(Collectors.toList());
