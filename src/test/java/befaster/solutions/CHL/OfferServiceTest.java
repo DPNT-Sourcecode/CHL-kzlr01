@@ -61,22 +61,4 @@ public class OfferServiceTest {
         assertThat(actualOffers.get(1).getOfferPrice(), equalTo(130));
     }
 
-    @Test
-    public void getFreeItems_returnEmptyMap() {
-        assertThat( offerService.getFreeItems(invalidOrder), equalTo(Collections.emptyMap()));
-    }
-
-    @Test
-    public void getFreeItems_returnEmptyMapWhenThereIsNo_BuyGetOffer() {
-        assertThat( offerService.getFreeItems(orderWithoutBuyGetOffer), equalTo(Collections.emptyMap()));
-    }
-
-
-    @Test
-    public void getFreeItems_returnFreeItemsWhenThereIs_BuyGetOffer() {
-        Map<String,Integer> actual = offerService.getFreeItems(orderWithBuyGetOffer);
-        assertThat( actual.get("B"), equalTo(7));
-    }
-
-
 }
