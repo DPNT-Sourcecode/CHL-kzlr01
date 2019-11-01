@@ -10,7 +10,6 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class CheckoutUtil {
 
-
     private PriceService priceService = new PriceService();
     private OfferService offerService = new OfferService();
     private MathUtil mathUtil = new MathUtil();
@@ -84,38 +83,6 @@ public class CheckoutUtil {
         return total;
     }
 
-
-//    Map<String, Integer> removeFreeItems(Map<String, Integer> itemWiseCount) {
-//        Map<String, Integer> refinedItemWiseCount = itemWiseCount;
-//
-//        Map<String, Integer> freeItems = offerService.getFreeItems(itemWiseCount);
-//
-//        for (String thisFreeItemSku : freeItems.keySet()) {
-//            if (refinedItemWiseCount.containsKey(thisFreeItemSku)) {
-//                Integer currentCount = refinedItemWiseCount.get(thisFreeItemSku);
-//                Integer offerCount = freeItems.get(thisFreeItemSku);
-//                Integer toRemove = 0;
-//
-//                System.out.println("******");
-//                System.out.println(thisFreeItemSku + " " + currentCount + " " + offerCount);
-//
-//                if (currentCount % offerCount == 0)
-//                    toRemove = currentCount - freeItems.get(thisFreeItemSku) + 1;
-//                else
-//                    toRemove = currentCount - freeItems.get(thisFreeItemSku);
-//
-//                System.out.println("toRemove= " + toRemove);
-//                if (currentCount.equals(offerCount)) toRemove = 0;
-//                System.out.println("toRemove= " + toRemove);
-//                System.out.println("Math.max(0, toRemove)= " + Math.max(0, toRemove));
-//
-//
-//                refinedItemWiseCount.put(thisFreeItemSku, Math.max(0, toRemove));
-//            }
-//        }
-//        return refinedItemWiseCount.entrySet().stream().filter(item -> item.getValue() > 0)
-//                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-//    }
 
 }
 
