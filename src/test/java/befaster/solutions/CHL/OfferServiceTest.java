@@ -2,6 +2,7 @@ package befaster.solutions.CHL;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.*;
 
@@ -40,6 +41,15 @@ public class OfferServiceTest {
         }
     };
 
+    private List<BuyGetOffer> expectedBuyGetOffers = new ArrayList<BuyGetOffer>() {
+        {
+            add(new BuyGetOffer("E", 2, "B", 1));
+            add(new BuyGetOffer("F", 2, "F", 1));
+            add(new BuyGetOffer("N", 3, "M", 1));
+            add(new BuyGetOffer("R", 3, "Q", 1));
+            add(new BuyGetOffer("U", 3, "U", 1));
+        }
+    };
     @Before
     public void setUp() {
         offerService = new OfferService();
@@ -55,10 +65,19 @@ public class OfferServiceTest {
     public void getCountOffersFor_returnsOfferList() {
         List<CountOffer> actualOffers = offerService.getCountOffersFor("A");
 
-        assertThat(actualOffers.get(0).getOfferCount(), equalTo(5));
-        assertThat(actualOffers.get(0).getOfferPrice(), equalTo(200));
-        assertThat(actualOffers.get(1).getOfferCount(), equalTo(3));
-        assertThat(actualOffers.get(1).getOfferPrice(), equalTo(130));
+        assertThat(actualOffers.get(0).getOfferCount(), equalTo(3));
+        assertThat(actualOffers.get(0).getOfferPrice(), equalTo(130));
+
+        assertThat(actualOffers.get(1).getOfferCount(), equalTo(5));
+        assertThat(actualOffers.get(1).getOfferPrice(), equalTo(200));
     }
 
+    @Test
+    public void getAllBuyGetOffers_returnsAllBuyGetOffers(){
+        List<BuyGetOffer> actualOffers = offerService.getAllBuyGetOffers();
+
+        assertThat(actualOffers.get(0).getBuyCount(), equalTo(2));
+        assertThat(actualOffers.get(0).getFreeCount(), equalTo(1));
+
+    }
 }
