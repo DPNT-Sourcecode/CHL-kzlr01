@@ -36,14 +36,14 @@ public class CheckoutUtilTest {
     }
 
     @Test
-    public void removeFreeItems_ShouldReturnTheSameListWhenThereIsNo_SpecialOffer() {
+    public void applyBuyGetOffer_ShouldReturnTheSameListWhenThereIsNo_SpecialOffer() {
         Map<String, Integer> actual = checkoutUtil.removeFreeItems(countExample1);
         assertThat(actual.get("A"), equalTo(1));
         assertThat(actual.get("B"), equalTo(3));
     }
 
     @Test
-    public void removeFreeItems_ShouldRemoveItemsUnderSpecialOffer() {
+    public void applyBuyGetOffer_ShouldRemoveItemsUnderSpecialOffer() {
         Map<String, Integer> actual = checkoutUtil.removeFreeItems(countExample2);
         assertThat(actual.get("A"), equalTo(1));
         assertThat(actual.get("B"), equalTo(1));
@@ -70,3 +70,4 @@ public class CheckoutUtilTest {
     }
 
 }
+

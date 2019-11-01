@@ -28,6 +28,10 @@ public class OfferService {
         return countOffers.stream().filter(o -> o.getSku().equals(sku)).collect(Collectors.toList());
     }
 
+    public List<BuyGetOffer> getAllBuyGetOffers() {
+        return buyGetOffers;
+    }
+
     public Map<String, Integer> getFreeItems(Map<String, Integer> orderedItems) {
         Map<String, Integer> freeItems = new HashMap<>();
 
@@ -53,6 +57,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
