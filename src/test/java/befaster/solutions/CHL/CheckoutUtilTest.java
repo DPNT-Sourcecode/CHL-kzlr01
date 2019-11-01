@@ -69,6 +69,12 @@ public class CheckoutUtilTest {
         assertThat(checkoutUtil.getTotalPrice("FFF"), equalTo(20));
         assertThat(checkoutUtil.getTotalPrice("FFFF"), equalTo(30));
         assertThat(checkoutUtil.getTotalPrice("FFFFFF"), equalTo(40));
+        assertThat(checkoutUtil.getTotalPrice("FFFFFF"), equalTo(40));
+
+
+        - {"method":"checklite","params":["AAAAA"],"id":"CHL_R4_038"}, expected: 200, got: 230
+                - {"method":"checklite","params":["AAAAAA"],"id":"CHL_R4_039"}, expected: 250, got: 260
+                - {"method":"checklite","params":["AAAAAAA"],"id":"CHL_R4_040"}, expected: 300, got: 310
     }
 
 

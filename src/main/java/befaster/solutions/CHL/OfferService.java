@@ -26,19 +26,21 @@ public class OfferService {
     */
 
     //Ideally from a persistance or injected repo which can be mocked in the unit test
+    //This will be a descending sorted at the database query level to give the customer favour offer
     private List<CountOffer> countOffers = new ArrayList<CountOffer>() {
         {
-            add(new CountOffer("A", 3, 130));
             add(new CountOffer("A", 5, 200));
+            add(new CountOffer("A", 3, 130));
+
             add(new CountOffer("B", 2, 45));
-            add(new CountOffer("H", 5, 45));
             add(new CountOffer("H", 10, 80));
+            add(new CountOffer("H", 5, 45));
 
             add(new CountOffer("K", 2, 150));
             add(new CountOffer("P", 5, 200));
             add(new CountOffer("Q", 3, 80));
-            add(new CountOffer("V", 2, 90));
             add(new CountOffer("V", 3, 130));
+            add(new CountOffer("V", 2, 90));
         }
     };
 
@@ -62,6 +64,7 @@ public class OfferService {
     }
 
 }
+
 
 
 
