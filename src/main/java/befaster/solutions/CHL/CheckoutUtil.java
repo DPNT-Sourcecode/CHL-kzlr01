@@ -37,9 +37,10 @@ public class CheckoutUtil {
             Integer buyCount = buyGetOffer.getBuyCount();
             String freeSku = buyGetOffer.getFreeSku();
             Integer freeCount = buyGetOffer.getFreeCount();
+
             if (originalOrder.containsKey(buySku) && originalOrder.containsKey(freeSku) && originalOrder.get(buySku) >= buyCount) {
                 if (buySku.equals(freeSku)) {
-                    refinedItemWiseCount.put((buySku,
+                    refinedItemWiseCount.put(buySku,
                             getBillableCountForSameSku(originalOrder.get(buySku).intValue(), buyCount, freeCount).longValue()
                     );
                 } else {
