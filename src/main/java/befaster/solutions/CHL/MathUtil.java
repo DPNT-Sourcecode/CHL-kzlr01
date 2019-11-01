@@ -1,9 +1,9 @@
 package befaster.solutions.CHL;
 
-public class MathUtil {
+class MathUtil {
 
-    Result getResult(Integer total, Integer offer) {
-        return new Result(total / offer, total % offer);
+    Result getResult(Integer dividend, Integer divisor) {
+        return new Result(dividend / divisor, dividend % divisor);
     }
 
 }

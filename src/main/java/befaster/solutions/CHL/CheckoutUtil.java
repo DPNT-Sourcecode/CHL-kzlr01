@@ -37,8 +37,7 @@ public class CheckoutUtil {
             Integer buyCount = buyGetOffer.getBuyCount();
             String freeSku = buyGetOffer.getFreeSku();
             Integer freeCount = buyGetOffer.getFreeCount();
-            // two cases
-            if (originalOrder.containsKey(buySku)) {
+            if (originalOrder.containsKey(buySku) && originalOrder.containsKey(freeSku) && originalOrder.get(buySku) >= buyCount) {
                 if (buySku.equals(freeSku)) {
                     refinedItemWiseCount.put((buySku,
                             getBillableCountForSameSku(originalOrder.get(buySku).intValue(), buyCount, freeCount).longValue()
@@ -47,11 +46,11 @@ public class CheckoutUtil {
                     Integer quotient = mathUtil
                             .getResult(refinedItemWiseCount.get(buySku).intValue(), buyGetOffer.getBuyCount())
                             .getQuotient();
-                    originalOrder.put(freeSku, originalOrder.get(freeSku) - (quotient* freeCount));
+                    originalOrder.put(freeSku, originalOrder.get(freeSku) - (quotient * freeCount));
                 }
             }
-
         }
+        return refinedItemWiseCount;
     }
 
     private Integer getBillableCountForSameSku(Integer inCart, Integer buyCount, Integer freeCount) {
@@ -118,3 +117,4 @@ public class CheckoutUtil {
 //    }
 
 }
+
